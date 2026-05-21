@@ -23,6 +23,19 @@ import java.util.Scanner;
 public class MemberManager {
 	static Scanner stdIn = new Scanner(System.in);
 	
+	static class Data {
+		static final int NO   = 1;        // 번호를 읽어 들일까요?
+        static final int NAME = 2;        // 이름을 읽어 들일까요?
+
+        private Integer no;                // 회원번호
+        private String  name;              // 이름
+
+        //--- 문자열 표현을 반환 ---//
+        public String toString() {
+            return "(" + no + ") " + name;
+        }
+	}
+	
 	enum Menu {
 		ADD_FIRST(  "맴버 삽입"),
         ADD_LAST(   "맴버 추가"),
@@ -79,6 +92,16 @@ public class MemberManager {
 	
 	public static void main(String[] args) {
 		System.out.println("프로그램 시작");
+		
+		Data data;
+		
+		data = new Data();
+		
+		data.no = 1234;
+		data.name = "Test Member";
+		
+		System.out.println("Data : " + data.toString());
+		
 		
 //		System.out.println("메뉴 개수 : " + Menu.Count());
 //		for (Menu m : Menu.values()) {
