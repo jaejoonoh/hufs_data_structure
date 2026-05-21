@@ -12,5 +12,13 @@ public class LinkedList<E> {
             this.next = next;
         }
     }
+    
+    private Node<E> head;        // 머리 포인터(머리 노드에 대한 참조)
+    private Node<E> crnt;        // 선택 포인터(선택 노드에 대한 참조)
+
+    //--- 생성자(constructor) ---//
+    public LinkedList() {
+        head = crnt = null;
+    }
 
 }
