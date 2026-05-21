@@ -1,5 +1,7 @@
 package MemberManagement;
 
+import java.util.Comparator;
+
 public class LinkedList<E> {
 	//--- 노드 ---//
     class Node<E> {
@@ -118,5 +120,19 @@ public class LinkedList<E> {
         while (head != null)        // 비게 될 때까지
             removeFirst();          // 머리 노드 삭제
         crnt = null;
+    }
+    
+    //--- 노드 검색 ---//
+    public E search(E obj, Comparator<? super E> c) {
+        Node<E> ptr = head;                          // 현재 스캔 중인 노드
+
+        while (ptr != null) {
+            if (c.compare(obj, ptr.data) == 0) {    // 검색 성공
+                crnt = ptr;
+                return ptr.data;
+            }
+            ptr = ptr.next;                                // 뒤쪽 노드에 주목
+        }
+        return null;                                       // 검색 실패
     }
 }

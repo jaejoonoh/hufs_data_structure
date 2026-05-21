@@ -1,5 +1,6 @@
 package MemberManagement;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 ///기능
@@ -46,6 +47,24 @@ public class MemberManager {
             if ((sw & NAME) == NAME) {
                 System.out.print("이름: ");
                 name = stdIn.next();
+            }
+        }
+        
+      //--- 회원번호로 순서를 매기는 comparator  ---//
+        public static final Comparator<Data> NO_ORDER = new NoOrderComparator();
+
+        private static class NoOrderComparator implements Comparator<Data> {
+            public int compare(Data d1, Data d2) {
+                return (d1.no > d2.no) ? 1 : (d1.no < d2.no) ? -1 : 0;
+            }
+        }
+        
+      //--- 이름으로 순서를 매기는 comparator  ---//
+        public static final Comparator<Data> NAME_ORDER = new NameOrderComparator();
+
+        private static class NameOrderComparator implements Comparator<Data> {
+            public int compare(Data d1, Data d2) {
+                return d1.name.compareTo(d2.name);
             }
         }
 	}
@@ -108,6 +127,8 @@ public class MemberManager {
 		System.out.println("프로그램 시작");
 		
 		Data data;
+		Data ptr;                                 // 검색용 데이터 참조
+        Data temp = new Data();                   // 읽어 들일 데이터
 		////Todo: Data 관리 공간 구현 필요 !!!!
 		LinkedList<Data> list = new LinkedList<Data>();        // 리스트를 생성
 				
@@ -139,8 +160,20 @@ public class MemberManager {
 				list.clear();
 				break;
 			case SEARCH_NO:
+				temp.scanData("검색", Data.NO);
+                ptr = list.search(temp, Data.NO_ORDER);
+                if (ptr == null)
+                    System.out.println("그 번호의 데이터가 없습니다.");
+                else
+                    System.out.println("검색 성공: " + ptr);
 				break;
 			case SEARCH_NAME:
+				temp.scanData("검색", Data.NAME);
+                ptr = list.search(temp, Data.NAME_ORDER);
+                if (ptr == null)
+                    System.out.println("그 이름의 데이터가 없습니다.");
+                else
+                    System.out.println("검색 성공: " + ptr);
 				break;
 			case NEXT:
 				list.next();
