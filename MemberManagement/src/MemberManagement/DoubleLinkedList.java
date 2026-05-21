@@ -20,4 +20,17 @@ public class DoubleLinkedList<E> {
             this.next = next;
         }
     }
+    
+    private Node<E> head;        // 머리 포인터(참조하는 곳은 더미노드)
+    private Node<E> crnt;        // 선택 포인터
+
+    //--- 생성자(constructor) ---//
+    public DoubleLinkedList() {
+        head = crnt = new Node<E>();        // 더미 노드를 생성
+    }
+
+    //--- 리스트가 비어있는가? ---//
+    public boolean isEmpty() {
+        return head.next == head;
+    }
 }
