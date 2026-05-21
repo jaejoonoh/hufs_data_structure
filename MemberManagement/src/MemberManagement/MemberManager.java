@@ -135,7 +135,8 @@ public class MemberManager {
 		Data ptr;                                 // 검색용 데이터 참조
         Data temp = new Data();                   // 읽어 들일 데이터
 		////Todo: Data 관리 공간 구현 필요 !!!!
-		LinkedList<Data> list = new LinkedList<Data>();        // 리스트를 생성
+		//LinkedList<Data> list = new LinkedList<Data>();        // 리스트를 생성
+		DoubleLinkedList<Data> list = new DoubleLinkedList<Data>(); // 리스트를 생성
 				
 		Menu menu;
 		do {
@@ -153,6 +154,9 @@ public class MemberManager {
 				list.addLast(data);
 				break;
 			case ADD:
+				data = new Data();
+                data.scanData("선택 노드 바로 뒤에 삽입", Data.NO | Data.NAME);
+                list.add(data);
 				break;
 			case RMV_FIRST:
 				list.removeFirst();
@@ -186,6 +190,7 @@ public class MemberManager {
 				list.next();
 				break;
 			case PREV:
+				list.prev();
 				break;
 			case PRINT_CRNT:
 				list.printCurrentNode();
