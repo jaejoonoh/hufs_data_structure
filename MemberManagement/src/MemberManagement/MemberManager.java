@@ -94,19 +94,8 @@ public class MemberManager {
 		System.out.println("프로그램 시작");
 		
 		Data data;
-		
-		data = new Data();
-		
-		data.no = 1234;
-		data.name = "Test Member";
-		
-		System.out.println("Data : " + data.toString());
-		
-		
-//		System.out.println("메뉴 개수 : " + Menu.Count());
-//		for (Menu m : Menu.values()) {
-//			System.out.printf("(%d) %s  \n", m.ordinal(), m.getMessage());
-//		}		
+		////Todo: Data 관리 공간 구현 필요 !!!!
+				
 		Menu menu;
 		do {
 			switch(menu = SelectMenu()) {
