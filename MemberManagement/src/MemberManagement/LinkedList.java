@@ -38,5 +38,33 @@ public class LinkedList<E> {
             ptr.next = crnt = new Node<E>(obj, null);
         }
     }
+    
+    //--- 다음 노드 선택 ---//
+    public boolean next() {
+        if (crnt == null || crnt.next == null)
+            return false;           // 나아갈 수 없음
+        crnt = crnt.next;
+        return true;
+    }
+    
+    //--- 선택 노드 표시 ---//
+    public void printCurrentNode() {
+        if (crnt == null)
+            System.out.println("주목노드가 없습니다.");
+        else
+            System.out.println(crnt.data);
+    }
+
+    //--- 전체 노드 표시 ---//
+    public void dump() {
+        Node<E> ptr = head;
+
+        while (ptr != null) {
+            System.out.println(ptr.data);
+            ptr = ptr.next;
+        }
+    }
+    
+    
 
 }
