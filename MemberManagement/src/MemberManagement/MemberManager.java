@@ -127,12 +127,16 @@ public class MemberManager {
 				list.addLast(data);
 				break;
 			case RMV_FIRST:
+				list.removeFirst();
 				break;
 			case RMV_LAST:
+				list.removeLast();
 				break;
 			case RMV_CRNT:
+				list.removeCurrentNode();
 				break;
 			case CLEAR:
+				list.clear();
 				break;
 			case SEARCH_NO:
 				break;

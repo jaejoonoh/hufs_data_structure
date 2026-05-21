@@ -65,6 +65,58 @@ public class LinkedList<E> {
         }
     }
     
-    
+  //--- 머리노드 삭제 ---//
+    public void removeFirst() {
+        if (head != null)                        // 리스트가 비어있지 않으면
+            head = crnt = head.next;
+    }
 
+    //--- 꼬리노드 삭제 ---//
+    public void removeLast() {
+        if (head != null) {
+            if (head.next == null)             // 노드가 하나만 있으면
+                removeFirst();                 // 머리노드 삭제
+            else {
+                Node<E> ptr = head;            // 스캔 중인 노드
+                Node<E> pre = head;            // 스캔 중인 노드의 앞쪽 노드
+
+                while (ptr.next != null) {
+                    pre = ptr;
+                    ptr = ptr.next;
+                }
+                pre.next = null;                // pre는 삭제 뒤의 꼬리 노드
+                crnt = pre;
+            }
+        }
+    }
+    
+    //--- 노드p 삭제 ---//
+    public void remove(Node p) {
+        if (head != null) {
+            if (p == head)                // p가 머리 노드이면
+                removeFirst();            // 머리 노드 삭제
+            else {
+                Node<E> ptr = head;
+
+                while (ptr.next != p) {
+                    ptr = ptr.next;
+                    if (ptr == null) return;    // p가 리스트에 없음
+                }
+                ptr.next = p.next;
+                crnt = ptr;
+            }
+        }
+    }
+    
+    //--- 선택 노드 삭제 ---//
+    public void removeCurrentNode() {
+        remove(crnt);
+    }
+    
+    //--- 전체노드 삭제 ---//
+    public void clear() {
+        while (head != null)        // 비게 될 때까지
+            removeFirst();          // 머리 노드 삭제
+        crnt = null;
+    }
 }
