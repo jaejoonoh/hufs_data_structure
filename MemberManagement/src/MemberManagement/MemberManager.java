@@ -85,9 +85,11 @@ public class MemberManager {
 //			System.out.printf("(%d) %s  \n", m.ordinal(), m.getMessage());
 //		}		
 		Menu menu;
-		menu = SelectMenu();
-		
-		System.out.println("선택된 매뉴 : " + menu.message);
+		do {
+			menu = SelectMenu(); 
+			System.out.println("선택된 매뉴 : " + menu.message);
+			
+		} while(menu != Menu.TERMINATE);
 		
 		System.out.println("프로그램 종료");
 	}
