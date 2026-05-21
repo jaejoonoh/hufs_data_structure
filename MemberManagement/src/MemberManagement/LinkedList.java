@@ -43,9 +43,12 @@ public class LinkedList<E> {
     
     //--- 다음 노드 선택 ---//
     public boolean next() {
-        if (crnt == null || crnt.next == null)
+        if (crnt == null )
             return false;           // 나아갈 수 없음
-        crnt = crnt.next;
+        if (crnt.next == null)
+        	crnt = head;
+        else
+        	crnt = crnt.next;
         return true;
     }
     
