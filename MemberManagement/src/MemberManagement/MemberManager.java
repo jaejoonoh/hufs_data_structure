@@ -15,6 +15,9 @@ import java.util.Scanner;
 ///9. 선택 맴버 표시
 ///10. 전체 맴버 조회
 ///11. 전체 맴버 삭제
+///추가기능
+///12. 선택 맴버 이후에 추가
+///13. 이전 맴버 선택
 
 ///맴버 데이터 
 ///1. 맴버ID
@@ -72,6 +75,7 @@ public class MemberManager {
 	enum Menu {
 		ADD_FIRST(  "맴버 삽입"),
         ADD_LAST(   "맴버 추가"),
+        ADD(        "선택 맴버 뒤에 맴버 추가"),
         RMV_FIRST(  "처음 맴버 삭제"),
         RMV_LAST(   "마지막 맴버 삭제"),
         RMV_CRNT(   "선택 맴버 삭제 삭제"),
@@ -79,6 +83,7 @@ public class MemberManager {
         SEARCH_NO(  "번호 검색"),
         SEARCH_NAME("이름 검색"),
         NEXT(       "다음 맴버 선택"),
+        PREV(       "이전 맴버 선택"),
         PRINT_CRNT( "선택 맴버 표시"),
         DUMP(       "전체 맴버 표시"),
         TERMINATE(  "종료");
@@ -147,6 +152,8 @@ public class MemberManager {
 				System.out.println("Data : " + data.toString());
 				list.addLast(data);
 				break;
+			case ADD:
+				break;
 			case RMV_FIRST:
 				list.removeFirst();
 				break;
@@ -177,6 +184,8 @@ public class MemberManager {
 				break;
 			case NEXT:
 				list.next();
+				break;
+			case PREV:
 				break;
 			case PRINT_CRNT:
 				list.printCurrentNode();
