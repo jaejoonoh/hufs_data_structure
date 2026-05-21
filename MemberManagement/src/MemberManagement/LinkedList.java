@@ -20,5 +20,23 @@ public class LinkedList<E> {
     public LinkedList() {
         head = crnt = null;
     }
+    
+  //--- 머리 노드 삽입 ---//
+    public void addFirst(E obj) {
+        Node<E> ptr = head;                       // 삽입 전의 머리 노드
+        head = crnt = new Node<E>(obj, ptr);
+    }
+    
+    //--- 꼬리 노드 삽입 ---//
+    public void addLast(E obj) {
+        if (head == null)                // 리스트가 비어있으면
+            addFirst(obj);               // 머리에 삽입
+        else {
+            Node<E> ptr = head;
+            while (ptr.next != null)
+                ptr = ptr.next;
+            ptr.next = crnt = new Node<E>(obj, null);
+        }
+    }
 
 }
