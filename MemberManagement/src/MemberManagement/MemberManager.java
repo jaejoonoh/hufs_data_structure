@@ -109,8 +109,33 @@ public class MemberManager {
 //		}		
 		Menu menu;
 		do {
-			menu = SelectMenu(); 
-			System.out.println("선택된 매뉴 : " + menu.message);
+			switch(menu = SelectMenu()) {
+			case ADD_FIRST:
+				break;
+			case ADD_LAST:
+				break;
+			case RMV_FIRST:
+				break;
+			case RMV_LAST:
+				break;
+			case RMV_CRNT:
+				break;
+			case CLEAR:
+				break;
+			case SEARCH_NO:
+				break;
+			case SEARCH_NAME:
+				break;
+			case NEXT:
+				break;
+			case PRINT_CRNT:
+				break;
+			case DUMP:
+				break;
+			case TERMINATE:
+				break;
+			}
+			//System.out.println("선택된 매뉴 : " + menu.message);
 			
 		} while(menu != Menu.TERMINATE);
 		
