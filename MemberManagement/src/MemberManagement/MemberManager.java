@@ -24,8 +24,8 @@ public class MemberManager {
 	static Scanner stdIn = new Scanner(System.in);
 	
 	static class Data {
-		static final int NO   = 1;        // 번호를 읽어 들일까요?
-        static final int NAME = 2;        // 이름을 읽어 들일까요?
+		static final int NO   = 1;        // 번호를 읽어 들일까요?b01
+        static final int NAME = 2;        // 이름을 읽어 들일까요?b10
 
         private Integer no;                // 회원번호
         private String  name;              // 이름
@@ -33,6 +33,20 @@ public class MemberManager {
         //--- 문자열 표현을 반환 ---//
         public String toString() {
             return "(" + no + ") " + name;
+        }
+        
+        //--- 데이터를 읽어 들임 ---//
+        void scanData(String guide, int sw) {
+            System.out.println(guide + "할 데이터를 입력하세요.");
+
+            if ((sw & NO) == NO) {
+                System.out.print("번호: ");
+                no = stdIn.nextInt();
+            }
+            if ((sw & NAME) == NAME) {
+                System.out.print("이름: ");
+                name = stdIn.next();
+            }
         }
 	}
 	
@@ -100,8 +114,14 @@ public class MemberManager {
 		do {
 			switch(menu = SelectMenu()) {
 			case ADD_FIRST:
+				data = new Data();
+				data.scanData("처음에 추가할 맴버", Data.NO | Data.NAME);
+				System.out.println("Data : " + data.toString());
 				break;
 			case ADD_LAST:
+				data = new Data();
+				data.scanData("마지막에 추가할 맴버", Data.NO | Data.NAME);
+				System.out.println("Data : " + data.toString());
 				break;
 			case RMV_FIRST:
 				break;
