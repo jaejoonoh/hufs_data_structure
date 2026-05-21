@@ -109,6 +109,7 @@ public class MemberManager {
 		
 		Data data;
 		////Todo: Data 관리 공간 구현 필요 !!!!
+		LinkedList<Data> list = new LinkedList<Data>();        // 리스트를 생성
 				
 		Menu menu;
 		do {
@@ -117,11 +118,13 @@ public class MemberManager {
 				data = new Data();
 				data.scanData("처음에 추가할 맴버", Data.NO | Data.NAME);
 				System.out.println("Data : " + data.toString());
+				list.addFirst(data);
 				break;
 			case ADD_LAST:
 				data = new Data();
 				data.scanData("마지막에 추가할 맴버", Data.NO | Data.NAME);
 				System.out.println("Data : " + data.toString());
+				list.addLast(data);
 				break;
 			case RMV_FIRST:
 				break;
@@ -136,10 +139,13 @@ public class MemberManager {
 			case SEARCH_NAME:
 				break;
 			case NEXT:
+				list.next();
 				break;
 			case PRINT_CRNT:
+				list.printCurrentNode();
 				break;
 			case DUMP:
+				list.dump();
 				break;
 			case TERMINATE:
 				break;
