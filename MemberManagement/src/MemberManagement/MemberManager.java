@@ -1,5 +1,7 @@
 package MemberManagement;
 
+import java.util.Scanner;
+
 ///기능
 ///1. 맴버 추가
 ///2. 맴버 삽입
@@ -19,6 +21,7 @@ package MemberManagement;
 
 
 public class MemberManager {
+	static Scanner stdIn = new Scanner(System.in);
 	
 	enum Menu {
 		ADD_FIRST(  "맴버 삽입"),
@@ -56,13 +59,35 @@ public class MemberManager {
 		
 	}
 	
+	//--- 메뉴 선택 ---//
+	///숫자로 매뉴를 선택한다.
+    static Menu SelectMenu() {
+        int key;
+        do {
+            for (Menu m : Menu.values()) {
+                System.out.printf("(%d) %s  ", m.ordinal(), m.getMessage());
+                if ((m.ordinal() % 3) == 2 &&
+                      m.ordinal() != Menu.TERMINATE.ordinal())
+                    System.out.println();
+            }
+            System.out.print(" : ");
+            key = stdIn.nextInt();
+        } while (key < Menu.ADD_FIRST.ordinal() || 
+                                            key > Menu.TERMINATE.ordinal());
+        return Menu.MenuAt(key);
+    }
+	
 	public static void main(String[] args) {
 		System.out.println("프로그램 시작");
 		
-		System.out.println("메뉴 개수 : " + Menu.Count());
-		for (Menu m : Menu.values()) {
-			System.out.printf("(%d) %s  \n", m.ordinal(), m.getMessage());
-		}		
+//		System.out.println("메뉴 개수 : " + Menu.Count());
+//		for (Menu m : Menu.values()) {
+//			System.out.printf("(%d) %s  \n", m.ordinal(), m.getMessage());
+//		}		
+		Menu menu;
+		menu = SelectMenu();
+		
+		System.out.println("선택된 매뉴 : " + menu.message);
 		
 		System.out.println("프로그램 종료");
 	}
